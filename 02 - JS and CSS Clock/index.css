@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(https://image.winudf.com/v2/image/Y29tLkx3cE1hc3Rlci5Ta3kxNl9zY3JlZW5fMF90ZmFrYnFqbw/screen-0.jpg?fakeurl=1&type=.webp);
+}
+
+.clock {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    transform-origin: 100%;
+}
+
+.clock-face {
+    border: 30px solid white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 40rem;
+    width: 40rem;
+    border-radius: 50%;
+    transform-origin: 100%;
+
+}
+
+.hand {
+    border: 8px solid black;
+    height: 18rem;
+    background-color: black;
+    position: absolute;
+    bottom: 50%;
+    transform-origin: 50% 100%;
+}
+
+.min-hand {
+    height: 16rem; 
+    border: 6px solid black;
+}
+
+.sec-hand{
+    height: 14rem;
+    border: 4px solid black;
+}
+
+.numbers{
+    color: rgb(255, 238, 0);
+    font-size: 50px;
+    font-family: 'Oldenburg', cursive;
+}

@@ -1,0 +1,42 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #8058dc;
+}
+
+.search-form{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: baseline;
+    margin-top: 100px;
+}
+
+.search{
+    height: 50px;
+    width: 300px;
+    border-radius: 10px;
+}
+
+.suggestions{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.suggestions > * {
+    font-size: 20px;
+    font-family: 'Staatliches', cursive;
+}
+
+.hl{
+    background-color: #5ab688;
+}
