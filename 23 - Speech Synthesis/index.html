@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Speech Synthesis</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="voiceinator">
+
+        <h1>The Voiceinator 5000</h1>
+
+        <select name="voice" id="voices">
+            <option value="">Select A Voice</option>
+        </select>
+
+        <label for="rate">Rate:</label>
+        <input name="rate" type="range" min="0" max="2" value="1" step="0.1">
+
+        <label for="pitch">Pitch:</label>
+
+        <input name="pitch" type="range" min="0" max="2" step="0.1">
+        <textarea name="text" placeholder="">Hello! I love Javascript 👍</textarea>
+        <button id="stop">Stop!</button>
+        <button id="speak">Speak</button>
+
+    </div>
+
+    <script>
+        const msg = new SpeechSynthesisUtterance();
+        let voices = [];
+        const voicesDropdown = document.querySelector('[name="voice"]');
+        const options = document.querySelectorAll('[type="range"], [name="text"]');
+        const speakButton = document.querySelector('#speak');
+        const stopButton = document.querySelector('#stop');
+
+        speechSynthesis.addEventListener("voiceschanged", populateVoices);
+
+        function populateVoices() {
+
+            voices.push(...speechSynthesis.getVoices())
+            voicesDropdown.innerHTML = voices.map((voice, index) => {
+                return `<option value="${index}">${voice.name} ${voice.lang}</option>`
+            }).join("")
+        }
+
+
+        let rate = 1;
+        let pitch = 1;
+        let text = document.querySelector('[name="text"]').value;
+
+        options.forEach(option => option.addEventListener("change", () => {
+            [rate, pitch, text] = [options[0].value, options[1].value, options[2].value];
+        }))
+
+        speakButton.addEventListener("click", newMsg);
+        stopButton.addEventListener("click", () => speechSynthesis.cancel())
+
+        function newMsg() {
+            msg.rate = rate;
+            msg.pitch = pitch;
+            msg.text = text;
+            msg.voice = voices[voicesDropdown.options[voicesDropdown.selectedIndex].value];
+            msg.volume = 1;
+            speechSynthesis.cancel()
+            speechSynthesis.speak(msg)
+        }
+
+    </script>
+
+
+</body>
+
+</html>
