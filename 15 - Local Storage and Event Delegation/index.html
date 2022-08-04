@@ -50,7 +50,10 @@
         const clearButton = document.querySelector('[value="Clear All"]');
         const checkAllButton = document.querySelector('[value="Check All"]')
 
-        const items = JSON.parse(localStorage.getItem("items")) || [];
+        //Os métodos são o setItem, getItem e o removeItem. Todos autoexplicativos
+
+        const items = JSON.parse(localStorage.getItem("items")) || []; //Pega os itens no Local Storage ou retorna um array vazio. O JSON.Parse faz o inverso do JSON.Stringfy.
+        //Ele converte o elemento JSON em um objeto Javascript tradicional.
 
         function addItem(e) {
             e.preventDefault();
@@ -61,7 +64,7 @@
             };
             items.push(item);
             populateList(items, itemsList);
-            localStorage.setItem("items", JSON.stringify(items))
+            localStorage.setItem("items", JSON.stringify(items)) //Transforma os itens para JSON, para poderem ficar salvos no LocalStorage.
             this.reset();
         };
 
@@ -73,7 +76,7 @@
                   <label for="item${i}">${plate.text}</label>  
                 </li>
                 `;
-            }).join('');
+            }).join(''); //Join serve para tirar as vírgulas entre os elementos do array.
         }
 
 
